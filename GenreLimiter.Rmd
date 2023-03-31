@@ -1,0 +1,88 @@
+---
+title: "Genre Limiter"
+output:
+  pdf_document: default
+  html_notebook: default
+---
+
+```{r}
+# some code taken from https://dataverse.harvard.edu/file.xhtml?persistentId=doi:10.7910/DVN/Q02JJQ/K5AWCU&version=2.0
+# to work with xml files from Discogs data dump and save only collaborative entries
+library(xml2)
+library(stringr)
+
+
+# function to create pairs incorporating all values for lists of more than 2 values
+expand.grid.unique <- function(x, y, include.equals=FALSE)
+{
+  x <- unique(x)
+  y <- unique(y)
+  g <- function(i)
+  {
+    z <- setdiff(y, x[seq_len(i-include.equals)])
+    if(length(z)) cbind(x[i], z, deparse.level=0)
+  }
+  do.call(rbind, lapply(seq_along(x), g))
+}
+
+data <- read_xml("discogs_20180901_masters.xml")
+```
+```{r}
+# parse each master entry, and convert to character
+masters <- as.character(xml_find_all(data, "//masters/master"))
+
+
+#save all parsed master entries
+save(masters, file = "discogs_entries.RData")
+```
+```{r}
+# save only entries with Hip Hop genre
+hh_entries <- masters[ grepl("<genre>Hip Hop</genre>", masters, fixed = TRUE) ]
+
+```
+```{r}
+# of Hip Hop entries, make sure they have Correct data quality only 
+correct_entries <- hh_entries[ grepl("<data_quality>Correct</data_quality>", hh_entries, fixed = TRUE) ]
+```
+```{r}
+# removing any entries that have genres that are not only Hip Hop
+to_exclude <- c("<genre>Blues</genre>", "<genre>Brass &amp; Military</genre>", "<genre>Children's</genre>", "<genre>Classical</genre>", "<genre>Electronic</genre>", "<genre>Folk, World, &amp; Country</genre>", "<genre>Funk / Soul</genre>", "<genre>Jazz</genre>", "<genre>Latin</genre>", "<genre>Non-Music</genre>", "<genre>Pop</genre>", "<genre>Reggae</genre>", "<genre>Rock</genre>", "<genre>Stage &amp; Screen</genre>")
+hh_only <- correct_entries[!grepl(paste(to_exclude,collapse="|"),correct_entries)]
+```
+
+```{r}
+#write.csv(hh_only, file = "discogs_correct_hh_only.csv", row.names = FALSE)
+```
+
+```{r}
+#save only entries where there is more than one artist id - collaborations
+collab_entries_hh_only <- subset(hh_only, str_count(as.character(hh_only), "</id>") >= 2)
+#head(collab_entries_hh_only)
+
+```
+```{r}
+save(collab_entries_hh_only, file = "discogs_collab_entries_hh.RData")
+#rm(data, masters, hh_entries, correct_entries, hh_only)
+
+
+```
+```{r}
+# create an edge list of collaborating artists using their ids
+edge_list <- data.frame()
+i <- 1
+while(i <= length(collab_entries_hh_only)){
+  curr_entry <- unique(str_match_all(as.character(collab_entries_hh_only[i]), "<id>(.*?)</id>")[[1]][,2])
+  if(length(curr_entry) >= 2){
+    edge_list <- rbind(edge_list, as.data.frame(expand.grid.unique(curr_entry, curr_entry)))
+  }
+ 
+  # increment i
+  i <- i + 1
+}
+
+# save an edge list to csv file
+write.csv(edge_list, file = "discogs_edges.csv", row.names = FALSE)
+```
+
+
+
