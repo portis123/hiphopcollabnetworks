@@ -81,11 +81,11 @@ df_artists_us_unique.reset_index(drop=True, inplace=True)
 
 print(df_artists_us_unique.head())
 
-df_artists_us_only.to_csv('artists_us_only.csv')
+df_artists_us_unique.to_csv('artists_us_only.csv')
 
 
 # as some data has been collected on artist city or region, get only those artists for which the info is missing
-df_missing_location = df_artists_us_only[df_artists_us_only['location'].isna()]
+df_missing_location = df_artists_us_unique[df_artists_us_unique['location'].isna()]
 
 print(df_missing_location.head())
 
