@@ -12,7 +12,6 @@ import numpy as np
 
 # load file with artist ids, names and countries, as derived from MusicBrainz
 df_locations = pd.read_excel('artist_id_names_country.xlsx')
-print(df_locations.head())
 print(df_locations)
 
 # Sense check that country column only contains countries and there are no different spellings of United States
@@ -53,7 +52,6 @@ result = df_edges.dtypes
 print(result)
 
 # result returns object for both columns so need to convert them to integers
-
 df_edges = df_edges.astype({"0":"int","1":"int"})
 
 # removing the non-US artist ids from both columns in edge list
@@ -69,23 +67,19 @@ combined_nodes = pd.concat([df_edges_col2_cleaned['0'], df_edges_col2_cleaned['1
 df_artists_us_only = df_locations[df_locations["artistId"].isin(combined_nodes)]
 print(df_artists_us_only)
 
-# remove the duplicates from the artist list we have just created 
-df_artists_us_unique = df_artists_us_only[~df_artists_us_only['artistName'].str.lower().duplicated()]
-print(df_artists_us_unique)
-
 # verify that only United States artists 
-print(df_artists_us_unique['country'].unique())
+print(df_artists_us_only['country'].unique())
 
 # reset the index in the new dataframe
-df_artists_us_unique.reset_index(drop=True, inplace=True)
+df_artists_us_only.reset_index(drop=True, inplace=True)
 
-print(df_artists_us_unique.head())
+print(df_artists_us_only.head())
 
-df_artists_us_unique.to_csv('artists_us_only.csv')
+df_artists_us_only.to_csv('artists_us_only.csv')
 
 
 # as some data has been collected on artist city or region, get only those artists for which the info is missing
-df_missing_location = df_artists_us_unique[df_artists_us_unique['location'].isna()]
+df_missing_location = df_artists_us_only[df_artists_us_only['location'].isna()]
 
 print(df_missing_location.head())
 
