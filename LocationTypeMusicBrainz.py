@@ -82,7 +82,7 @@ def add_location_and_type(artist_df):
         artist = artist_df['artistName'][ind]
         if pd.isnull(artist_df['location'][ind]):
             location, typeName = get_location_and_type(artist)
-            print(artist, ": location: ", location, "type: ", typeName)
+            print(artist, ": location: ", location, "type: ", typeName) # printing this to check correct artist, and see missing data
             artist_df.at[ind,'location'] = location
             artist_df.at[ind,'type'] = typeName
     return artist_df
