@@ -33,7 +33,7 @@ masters <- as.character(xml_find_all(data, "//masters/master"))
 
 
 #save all parsed master entries
-save(masters, file = "discogs_entries.RData")
+save(masters, file = "discogs_masters.RData")
 ```
 ```{r}
 # save only entries with Hip Hop genre
