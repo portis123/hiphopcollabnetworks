@@ -13,4 +13,4 @@ Files included in this repository are:
 10. [df_edges_cleaned.csv](df_edges_cleaned.csv): Output of GettingAliasesRemovingCollabs.py containing edges where artists are not collaborating with one of their aliases
 11. [artists_cleaned_after_duplicates.csv](artists_cleaned_after_duplicates.csv): Output of GettingAliasesRemovingCollabs.py containing only those artists contained in the updated edge list (df_edges_cleaned.csv)
 12. [ArtistCountryMusicbrainz.py](ArtistCountryMusicbrainz.py): Python file where the the country for each artist in the dataset is requested through calls to the MusicBrainz API using the musicbrainzngs library
-13. [artist_id_names_country_mb.csv](artist_id_names_country_mb.csv): File in which country information for artists has been inputted mainly based on requests from MusicBrainz as well as research from other sources
+13. [artist_id_names_country_mb.csv](artist_id_names_country_mb.csv): File in which country information for artists has been inputted mainly based on requests from MusicBrainz as well as research from other sources. Used in Excel format but saved as csv to be compatible with Github requirements
