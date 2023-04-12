@@ -34,7 +34,7 @@ df_locations_non_us = df_locations.loc[df_locations["country"] !='United States'
 print(df_locations_non_us.head())
 
 # checking to make sure no anomalies
-df_locations_non_us['country'].unique()
+print(np.sort(df_locations_non_us['country'].unique().astype(str)))
 
 
 # getting the artist ids from those not from the United States
@@ -44,6 +44,7 @@ print(artist_ids)
 df_edges = pd.read_csv('df_edges_cleaned.csv', index_col=0)
 print(df_edges)
 
+# removing V1 and V2 headers
 df_edges = df_edges.iloc[1:]
 df_edges.head()
 
