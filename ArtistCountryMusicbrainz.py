@@ -2,12 +2,12 @@
 """
 Created on Wed Mar 22 18:18:52 2023
 
+Getting the country for each artist in the dataset through calls to the MusicBrainz API 
+using the musicbrainzngs library. 
+Source: https://python.hotexamples.com/examples/musicbrainzngs/-/get_artist_by_id/python-get_artist_by_id-function-examples.html
+
 @author: Monique Brogan
 """
-
-# Getting the country for each artist in the dataset through calls to the MusicBrainz API 
-# using the musicbrainzngs library. 
-# Source: https://python.hotexamples.com/examples/musicbrainzngs/-/get_artist_by_id/python-get_artist_by_id-function-examples.html
 
 import musicbrainzngs as mbz
 
@@ -84,4 +84,4 @@ df_artists_cleaned.head()
 
 df = add_country(df_artists_cleaned)
 
-df.to_csv('artists_cleaned_after_duplicates_country.csv',index = False)
+#df.to_csv('artists_cleaned_after_duplicates_country.csv',index = False)
