@@ -2,11 +2,12 @@
 """
 Created on Wed Mar 22 18:37:33 2023
 
+Code to gather location data for US artists we are missing from MusicBrainz using the 
+musicbrainzngs library. 
+Source of some of the below code: https://python.hotexamples.com/examples/musicbrainzngs/-/get_artist_by_id/python-get_artist_by_id-function-examples.html
+
 @author: Monique Brogan
 """
-# Code to gather location data for US artists we are missing from MusicBrainz using the 
-# musicbrainzngs library. 
-# Source of some of the below code: https://python.hotexamples.com/examples/musicbrainzngs/-/get_artist_by_id/python-get_artist_by_id-function-examples.html
 
 import musicbrainzngs as mbz
 import time
