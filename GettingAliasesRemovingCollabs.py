@@ -21,9 +21,7 @@ import pandas as pd
 import csv
 
 # import list of artist ids and artist names
-df_cleaned = pd.read_csv('artist_id_names.csv', encoding="latin1")
-
-
+df_cleaned = pd.read_csv('df_artists_cleaned.csv', index_col=0)
 df_cleaned
 
 # parsing the Discogs artists file 
@@ -70,7 +68,7 @@ all_artists
 all_artists.to_csv('artists_aliases.csv')
 
 # load in our file which includes artist ids, artist names, and aliases
-df_artists_aliases = pd.read_csv('artists_aliases.csv')
+df_artists_aliases = pd.read_csv('artists_aliases.csv', index_col=0)
 print(df_artists_aliases.head())
 
 #make a series of the artist ids for those artists we are interested in
@@ -80,8 +78,6 @@ series_id
 # create a dataframe of the artists with aliases for only those artists we are interested in
 df_reconciled = df_artists_aliases[df_artists_aliases['id'].isin(series_id)]
 
-#df_reconciled = df_reconciled.drop(columns = 'Unnamed: 0')
-
 df_reconciled
 
 # reset the index in the new dataframe
@@ -89,32 +85,6 @@ df_reconciled.reset_index(drop=True, inplace=True)
 
 df_reconciled.to_csv('artists_aliases.csv')
 
-#df_edges_names = pd.read_csv('df_edge_list_names.csv')
-
-#df_edges_names.head()
-
-#df_reconciled[df_reconciled['id']==198518]
-
-#df_edge_count = pd.read_csv('edge_count.csv')
-
-#df_edge_count.head()
-
-#df_reconciled.loc[df_reconciled['aliases'].str.contains("331629", case=False)]['id'].to_string(index=False)
-
-# checking whether an artist is shown as sharing an edge with an id associated with one of their own aliases
-#def checkAliasCollaborations(edge_list, edge_count):
-#    for ind in edge_count.index:
-#        value = str(edge_count['V1'][ind])
-#        comparison = df_reconciled.loc[df_reconciled['aliases'].str.contains(str(edge_count['V2'][ind]), case=False)]['id'].to_string(index=False)
-#        if value == comparison:
-#       # Get indices where name column has value from column V1 and value from column V2 where are same artist
-#            indexNames = edge_list[(edge_list['V1'] == int(value)) & (edge_list['V2'] == int(edge_count['V2'][ind]))].index
-#        # Delete these row indexes from dataFrame
-#            edge_list.drop(indexNames , inplace=True)
-#    return edge_list
-
-#df_edges_full = pd.read_csv('discogs_edges.csv')
-#print("length of df before: ", len(df_edges_full))
 
 # making a dictionary of artist ids and associated aliases
 alias_dict = {}
@@ -135,47 +105,31 @@ with open('discogs_edges.csv', 'r', encoding="utf8") as file:
            edges_without_alias_collaboration.append(row)
                 
 
-#for edge in edges_without_alias_collaboration:
-##    print(edge)
-
-len(edges_without_alias_collaboration)
+df_edges_before = pd.read_csv('discogs_edges.csv')
+len(df_edges_before)
 df = pd.DataFrame(edges_without_alias_collaboration)
 print("length of df after: ", len(df))
 
 df.to_csv('df_edges_cleaned.csv')
 
-
-
-#df_edge_latest = checkAliasCollaborations(df_updated_edges, df_edge_count)
-#print("length of df after: ", len(df_edge_latest))
-
-# new updated edge list with alias collaborations removed
-#df_edge_latest.to_csv('df_edges_cleaned.csv', index = False)
-
 df_edges = pd.read_csv('df_edges_cleaned.csv', index_col=0)
 
 df_edges.head()
 
+# only look at header and artist Ids, without V1 and V2
 df_edges = df_edges.iloc[1:]
 df_edges.head()
 
-len(df_cleaned)
+#len(df_cleaned)
 
 combined_nodes = pd.concat([df_edges['0'], df_edges['1']])
 combined_nodes = combined_nodes.astype(int)
 
-len(combined_nodes.unique())
+#len(combined_nodes.unique())
 
 # get only the artists that are in the list of nodes from our edge list
 df_artists_hh_new = df_cleaned[df_cleaned["artistId"].isin(combined_nodes)]
-len(df_artists_hh_new)
-
-# remove the duplicates from the artist list we have just created
-#df_artists_cleaned = df_artists_hh_new[~df_artists_hh_new['artistName'].str.lower().duplicated()]
-
-#len(df_artists_cleaned)
-
-#df_artists_cleaned.head()
+#en(df_artists_hh_new)
 
 df_artists_hh_new.to_csv('artists_cleaned_after_duplicates.csv', index = False)
 
