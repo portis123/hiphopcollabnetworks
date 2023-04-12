@@ -29,10 +29,14 @@ print(df_artists_cleaned)
 # reset the index in the new dataframe
 df_artists_cleaned.reset_index(drop=True, inplace=True)
 
-df_artists_cleaned.head()
+df_artists_cleaned
+
+df_artists_sorted = df_artists_cleaned.sort_values(by=['artistId'])
+df_artists_sorted.reset_index(drop=True, inplace=True)
+df_artists_sorted
 
 # save list of relevant artist ids and names
-df_artists_cleaned.to_csv('df_artists_cleaned.csv')
+df_artists_sorted.to_csv('df_artists_cleaned.csv')
 
 # create a dictionary of artist ids and names
 map_dict = dict(zip(df_artists_cleaned.artistId,df_artists_cleaned.artistName))
