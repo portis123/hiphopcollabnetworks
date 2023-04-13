@@ -30,3 +30,5 @@ country data (not US - found when adding locations) or not being musicians but r
 10. **The remove tag was added in the Excel file manually for those artists with multiple locations, and the RemovingArtists.py functionality was used again to remove these artist from the dataset. Output files of this process are below**
     * [edges_w_locations_removed_multiple.csv](edges_w_locations_removed_multiple.csv): Output of running RemovingArtists.py functionality on latest edge file, to remove artists with multiple locations who had been tagged with REMOVE. Edge file resulting from this process
     * [artists_w_locations_removed_multiple.csv](artists_w_locations_removed_multiple.csv): Output of running RemovingArtists.py functionality on latest artist file, to remove artists with multiple locations who had been tagged with REMOVE. Artist file resulting from this process
+11. [LocationCode.py](LocationCode.py): Python file where location classifiers are added for artist details, the basis for ground truth
+    * [artists_with_location_codes_simpler.csv](artists_with_location_codes_simpler.csv): Output of running LocationCode.py on artist file. Updated artist file
