@@ -32,3 +32,5 @@ country data (not US - found when adding locations) or not being musicians but r
     * [artists_w_locations_removed_multiple.csv](artists_w_locations_removed_multiple.csv): Output of running RemovingArtists.py functionality on latest artist file, to remove artists with multiple locations who had been tagged with REMOVE. Artist file resulting from this process
 11. [LocationCode.py](LocationCode.py): Python file where location classifiers are added for artist details, the basis for ground truth
     * [artists_with_location_codes_simpler.csv](artists_with_location_codes_simpler.csv): Output of running LocationCode.py on artist file. Updated artist file
+12. [CountEdges.py](CountEdges.py): Python file where the number of edges between the same two artists is counted. Getting edge weight information
+    * [edge_count.csv](edge_count.csv): Output of CountEdges.py. Edge weight information
