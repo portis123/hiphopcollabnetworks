@@ -6,12 +6,14 @@ output: html_notebook
 ```{r}
 # Load the library xml2
 library(xml2)
+
 # Read the discogs data dump masters file
 discogs_data = read_xml('discogs_20180901_masters.xml')
 ```
 ```{r}
 # create a dataframe with artist ids and the associated artists' names
 library(tibble)
+
 artistId <- xml_text(xml_find_all(discogs_data, xpath = "//artists/artist/id"))
 artistName <- xml_text(xml_find_all(discogs_data, xpath = "//artists/artist/name"))
 df <- tibble(artistId = artistId, artistName = artistName)
@@ -19,6 +21,7 @@ df <- tibble(artistId = artistId, artistName = artistName)
 ```{r}
 # remove duplicate entries
 library(dplyr)
+
 cleaned_df = distinct(df)
 ```
 ```{r}
