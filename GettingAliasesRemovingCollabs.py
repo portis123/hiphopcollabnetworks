@@ -11,9 +11,6 @@ Cleaned up the artist list based on updated edge list
 
 @author: Monique Brogan
 """
-
-
-
 #pip install xmltodict
 
 # to help with decompressing Discogs data dump file
