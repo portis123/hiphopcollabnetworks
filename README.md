@@ -20,3 +20,7 @@ Files included in this repository are:
 17. [artists_missing_locations.csv](artists_missing_locations.csv): Output of us_only_data.py. US artists missing locations
 18. [LocationTypeMusicBrainz.py](LocationTypeMusicBrainz.py): Python file where the the begin area and type for each artist in the dataset is requested through calls to the MusicBrainz API using the musicbrainzngs library
 19. [artists_us_only_w_location.csv](artists_us_only_w_location.csv): File in which location and type information for artists has been inputted mainly based on requests from MusicBrainz as well as research from other sources. Used in Excel format but saved as csv to be compatible with Github requirements
+20. [removing_artists.py](removing_artists.py): Python file where artists that have been marked to remove because of being labels rather than artists, having incorrect 
+country data (not US - found when adding locations) or not being musicians but rather actors (Saget) or other non-musicians (Malcolm X), are removed
+21. [edges_us_only_cleaned.csv](edges_us_only_cleaned.csv): Output of removing_artists.py. Updated edge list without removed artists
+22. [artists_us_only_cleaned.csv](artists_us_only_cleaned.csv): Output of removing_artists.py. Updated artist list without removed artists
