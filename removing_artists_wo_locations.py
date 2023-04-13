@@ -2,6 +2,8 @@
 """
 Created on Sun Mar 19 18:33:54 2023
 
+Removing artists from edge file and artist file that have no location (not able to be found)
+
 @author: Monique Brogan
 """
 import pandas as pd
@@ -30,16 +32,12 @@ df_edges_col2_cleaned.to_csv('edges_with_locations.csv')
 
 # creating an updated artist file with the new edges file to ensure we only have relevant artists
 combined_nodes = pd.concat([df_edges_col2_cleaned['0'], df_edges_col2_cleaned['1']])
+#print(combined_nodes)
 #len(combined_nodes.unique())
 
 
 df_artists_w_locations = df_artists[df_artists["artistId"].isin(combined_nodes)]
 print(df_artists_w_locations.head())
-
-# remove the duplicates from the artist list we have just created, if any
-#df_artists_w_locations_unique =df_artists_w_locations[~df_artists_w_locations['artistName'].str.lower().duplicated()]
-#print(df_artists_w_locations_unique)
-
 
 # reset the index in the new dataframe
 df_artists_w_locations.reset_index(drop=True, inplace=True)
