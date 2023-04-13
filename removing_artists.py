@@ -3,7 +3,7 @@
 Created on Sun Mar 19 16:27:57 2023
 
 Removing artists that have been marked to remove because of being labels rather than artists, having incorrect 
-location data (not US) or not being musicians but rather actors (Saget) or other non-musicians (Malcolm X)
+country data (not US - found when adding locations) or not being musicians but rather actors (Saget) or other non-musicians (Malcolm X)
 
 @author: Monique Brogan
 """
@@ -34,11 +34,6 @@ len(combined_nodes.unique())
 
 df_artists_cleaned = df_artists[df_artists["artistId"].isin(combined_nodes)]
 len(df_artists_cleaned)
-
-# remove the duplicates from the artist list we have just created, if any
-#df_artists_cleaned_unique = df_artists_cleaned[~df_artists_cleaned['artistName'].str.lower().duplicated()]
-#print(df_artists_cleaned_unique)
-
 
 # reset the index in the new dataframe
 df_artists_cleaned.reset_index(drop=True, inplace=True)
