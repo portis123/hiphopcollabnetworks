@@ -18,3 +18,5 @@ Files included in this repository are:
 15. [edges_us_only.csv](edges_us_only.csv): Output of us_only_data.py. Edge file for collaborating artists from the US only
 16. [artists_us_only.csv](artists_us_only.csv): Output of us_only_data.py. US artists only
 17. [artists_missing_locations.csv](artists_missing_locations.csv): Output of us_only_data.py. US artists missing locations
+18. [LocationTypeMusicBrainz.py](LocationTypeMusicBrainz.py): Python file where the the begin area and type for each artist in the dataset is requested through calls to the MusicBrainz API using the musicbrainzngs library
+19. [artists_us_only_w_location.csv](artists_us_only_w_location.csv): File in which location and type information for artists has been inputted mainly based on requests from MusicBrainz as well as research from other sources. Used in Excel format but saved as csv to be compatible with Github requirements
