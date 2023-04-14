@@ -16,7 +16,7 @@ next(edge_list, None)  # get past the headers
 GT = nx.Graph()
 
 G = nx.parse_edgelist(edge_list, delimiter=',', create_using=GT,
-                      nodetype=int, data=(('Weight', int),))
+                      nodetype=int, data=(('weight', int),))
 
 print(G)
 
@@ -47,8 +47,8 @@ from cdlib import algorithms
 #pip install leidenalg
 
 # Louvain algorithm
-louvain_full = algorithms.louvain(G, weight='Weight', resolution=1.)
-louvain_largest_c = algorithms.louvain(largest_graph, weight='Weight', resolution=1.)
+louvain_full = algorithms.louvain(G, weight='weight', resolution=1.)
+louvain_largest_c = algorithms.louvain(largest_graph, weight='weight', resolution=1.)
 print("Number of communities found by Louvain algorithm on full graph: ", len(louvain_full.communities))
 print("Number of communities found by Louvain algorithm on largest component: ",len(louvain_largest_c.communities))
 # Modularity
@@ -58,8 +58,8 @@ print("Modularity score for Louvain algorithm on full graph: ", mod_louvain_full
 print("Modularity score for Louvain algorithm on largest component: ", mod_louvain_largest_c.score)
 
 # Leiden algorithm
-leiden_full = algorithms.leiden(G, weights='Weight')
-leiden_largest_c = algorithms.leiden(largest_graph, weights='Weight')
+leiden_full = algorithms.leiden(G, weights='weight')
+leiden_largest_c = algorithms.leiden(largest_graph, weights='weight')
 print("Number of communities found by Leiden algorithm on full graph: ",len(leiden_full.communities))
 print("Number of communities found by Leiden algorithm on largest component: ",len(leiden_largest_c.communities))
 # Modularity
