@@ -9,8 +9,6 @@ Running network analytics on the Discogs dataset
 import networkx as nx
 import csv
 
-
-
 # some network statistics as per lectures in Data Science Applications and Techniques, David Weston, Birkbeck University, 2023
 
 # create dictionary of artist ids with names - removed header from artists_with_location_codes_simpler.csv 
