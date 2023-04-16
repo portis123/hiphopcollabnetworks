@@ -6,23 +6,12 @@ Running network analytics on the Discogs dataset
 
 @author: Monique Brogan
 """
-import numpy as np
 import networkx as nx
 import csv
-import pandas as pd
-from networkx.algorithms import community
 
-import matplotlib.pylab as plt
 
-# matplotlib specifications and some network statistics as per lectures in Data Science Applications 
-# and Techniques, David Weston, Birkbeck University, 2023
-%matplotlib inline 
-plt.style.use('seaborn-white')
-plt.rc('text', usetex = False)
-plt.rc('xtick', labelsize = 10) 
-plt.rc('ytick', labelsize = 10) 
-plt.rc('font', size = 12) 
-plt.rc('figure', figsize = (12, 5))
+
+# some network statistics as per lectures in Data Science Applications and Techniques, David Weston, Birkbeck University, 2023
 
 # create dictionary of artist ids with names - removed header from artists_with_location_codes_simpler.csv 
 # file and saved it as artists_with_location_codes_simpler_for_dict.csv
