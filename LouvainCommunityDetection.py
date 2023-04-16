@@ -2,6 +2,8 @@
 """
 Created on Fri Apr  7 18:52:05 2023
 
+Plotting the communities produced by the Louvain Community Detection algorithm
+
 @author: Monique Brogan
 """
 
