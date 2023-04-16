@@ -36,3 +36,5 @@ country data (not US - found when adding locations) or not being musicians but r
     * [edge_count.csv](edge_count.csv): Output of CountEdges.py. Edge weight information
 13. [NetworkAnalysis.py](NetworkAnalysis.py): Python file where network analytics are run on the US hip hop artists weighted edge list
 14. [CommunitiesTests.py](CommunitiesTests.py): Python file where the Louvain and Leiden Community Detection algorithms are run, along with obtaining their modularity scores to get a comparison of performance
+15. [LouvainCommunityDetection.py](LouvainCommunityDetection.py): Python file where the communities produced by the Louvain Community Detection algorithm are plotted
+16. [ExaminingCommunities.py](ExaminingCommunities.py): Python file in which the details of communities are examined, looking at all the communities and then the 5 largest by size for location trends. Also looking at 5 largest communities and location trends for top 5 artists in each community by weighted degree
