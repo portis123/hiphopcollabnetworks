@@ -28,9 +28,9 @@ print(df_artists_cleaned)
 
 # reset the index in the new dataframe
 df_artists_cleaned.reset_index(drop=True, inplace=True)
-
 df_artists_cleaned
 
+# sort the resulting artist list by artist ID
 df_artists_sorted = df_artists_cleaned.sort_values(by=['artistId'])
 df_artists_sorted.reset_index(drop=True, inplace=True)
 df_artists_sorted
