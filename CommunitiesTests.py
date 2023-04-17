@@ -34,7 +34,6 @@ largest_graph = nx.subgraph(G, largest_component)
 
 #!pip install cdlib
 
-import networkx as nx
 from cdlib import algorithms
 
 #pip install leidenalg
