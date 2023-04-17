@@ -11,8 +11,7 @@ output:
 library(xml2)
 library(stringr)
 
-
-# function to create pairs incorporating all values for lists of more than 2 values
+# function to create unique pairs incorporating all values for lists of more than 2 values
 expand.grid.unique <- function(x, y, include.equals=FALSE)
 {
   x <- unique(x)
@@ -25,11 +24,11 @@ expand.grid.unique <- function(x, y, include.equals=FALSE)
   do.call(rbind, lapply(seq_along(x), g))
 }
 
-data <- read_xml("discogs_20180901_masters.xml")
+discogs <- read_xml("discogs_20180901_masters.xml")
 ```
 ```{r}
 # parse each master entry, and convert to character
-masters <- as.character(xml_find_all(data, "//masters/master"))
+masters <- as.character(xml_find_all(discogs, "//masters/master"))
 
 
 #save all parsed master entries
@@ -41,7 +40,7 @@ hh_entries <- masters[ grepl("<genre>Hip Hop</genre>", masters, fixed = TRUE) ]
 
 ```
 ```{r}
-# of Hip Hop entries, make sure they have Correct data quality only 
+# For Hip Hop entries, make sure they have Correct data quality only 
 correct_entries <- hh_entries[ grepl("<data_quality>Correct</data_quality>", hh_entries, fixed = TRUE) ]
 ```
 ```{r}
@@ -49,22 +48,14 @@ correct_entries <- hh_entries[ grepl("<data_quality>Correct</data_quality>", hh_
 to_exclude <- c("<genre>Blues</genre>", "<genre>Brass &amp; Military</genre>", "<genre>Children's</genre>", "<genre>Classical</genre>", "<genre>Electronic</genre>", "<genre>Folk, World, &amp; Country</genre>", "<genre>Funk / Soul</genre>", "<genre>Jazz</genre>", "<genre>Latin</genre>", "<genre>Non-Music</genre>", "<genre>Pop</genre>", "<genre>Reggae</genre>", "<genre>Rock</genre>", "<genre>Stage &amp; Screen</genre>")
 hh_only <- correct_entries[!grepl(paste(to_exclude,collapse="|"),correct_entries)]
 ```
-
-```{r}
-#write.csv(hh_only, file = "discogs_correct_hh_only.csv", row.names = FALSE)
-```
-
 ```{r}
 #save only entries where there is more than one artist id - collaborations
 collab_entries_hh_only <- subset(hh_only, str_count(as.character(hh_only), "</id>") >= 2)
-#head(collab_entries_hh_only)
 
 ```
 ```{r}
 save(collab_entries_hh_only, file = "discogs_collab_entries_hh.RData")
-#rm(data, masters, hh_entries, correct_entries, hh_only)
-
-
+rm(discogs, masters, hh_entries, correct_entries, hh_only)
 ```
 ```{r}
 # create an edge list of collaborating artists using their ids
