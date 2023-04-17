@@ -4,10 +4,9 @@ output:
   pdf_document: default
   html_notebook: default
 ---
+# some code adapted from https://dataverse.harvard.edu/file.xhtml?persistentId=doi:10.7910/DVN/Q02JJQ/K5AWCU&version=2.0 to work with xml files from Discogs data dump and save only collaborative entries
 
 ```{r}
-# some code adapted from https://dataverse.harvard.edu/file.xhtml?persistentId=doi:10.7910/DVN/Q02JJQ/K5AWCU&version=2.0
-# to work with xml files from Discogs data dump and save only collaborative entries
 library(xml2)
 library(stringr)
 
