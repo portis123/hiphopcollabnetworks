@@ -1,14 +1,10 @@
 # -*- coding: utf-8 -*-
 """
-Created on Wed Mar 22 18:37:33 2023
-
-Code to gather location data for US artists we are missing from MusicBrainz using the 
-musicbrainzngs library. 
+Code to gather location data for US artists from MusicBrainz using the musicbrainzngs library. 
 Source of some of the below code: https://python.hotexamples.com/examples/musicbrainzngs/-/get_artist_by_id/python-get_artist_by_id-function-examples.html
 
 @author: Monique Brogan
 """
-
 import musicbrainzngs as mbz
 import time
 import pandas as pd
@@ -17,8 +13,7 @@ mbz.set_useragent('MoniqueBrogan', '0.1', '123portis@googlemail.com')
 
 from fuzzywuzzy import process
 
-# getting the name from the list returned by MusicBrainz that most closely matches the artist
-# name from Discogs
+# getting the name from the list returned by MusicBrainz that most closely matches the artist name from Discogs
 def check_name_match(artistList, artistName):
     name = artistName
     options = artistList
@@ -30,8 +25,7 @@ def check_name_match(artistList, artistName):
     print("Correct name: ", correct_name)
     return correct_name
 
-# getting location where artist was born from MusicBrainz and type of artist 
-# (person or group)
+# getting location where artist was born from MusicBrainz and type of artist (person or group)
 def get_location_and_type(artist_name):
     try:
         result = mbz.search_artists(artist=artist_name)['artist-list']
@@ -42,8 +36,7 @@ def get_location_and_type(artist_name):
             # looping through the artist list returned to get the index and names of artists
             for i in range(len(result)):
                 names_list.append(result[i]['name'])
-            # get the correct search result from Musicbrainz most closely matching 
-            # Discogs artist as per a fuzzy match
+            # get the correct search result from Musicbrainz most closely matching Discogs artist as per a fuzzy match
             correct_result = check_name_match(names_list, artist_name)
             # index of best match to artist from the names_list
             first = names_list.index(correct_result)
@@ -77,7 +70,9 @@ def get_type(artistName):
         typeName = "not available"
     return typeName
 
-# adding location and type data to artist dataframe
+# adding location and type data to artist dataframe - in the end, I had to manually add this to an Excel file from 
+# the printouts due to some artists having the same names so data needed to be checked, and also needing to source
+# data for artists which had no location or type in MusicBrainz
 def add_location_and_type(artist_df):
     for ind in artist_df.index:
         artist = artist_df['artistName'][ind]
@@ -89,7 +84,5 @@ def add_location_and_type(artist_df):
     return artist_df
 
 df_artists_location_needed = pd.read_csv('artists_missing_locations.csv')
-
-df_artists_location_needed.head()
 
 df = add_location_and_type(df_artists_location_needed)
