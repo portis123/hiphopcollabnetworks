@@ -7,7 +7,6 @@ Filtering dataset for artists based in the US only
 import pandas as pd
 import numpy as np
 
-
 # load file with artist ids, names and countries, as derived from MusicBrainz
 df_locations = pd.read_excel('artist_id_names_country.xlsx')
 
