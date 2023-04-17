@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 """
-Created on Fri Apr  7 18:52:05 2023
-
 Plotting the communities produced by the Louvain Community Detection algorithm
 
 @author: Monique Brogan
@@ -22,18 +20,15 @@ GT = nx.Graph()
 G = nx.parse_edgelist(edge_list, delimiter=',', create_using=GT,
                       nodetype=int, data=(('weight', int),))
 
-print(G)
-
-#G.edges.data()
 
 # Filtering the larger dataset down to the largest component
-# Connected components are sorted in descending order of their size - finding the largest component
+# Finding the largest component
 connected_comps = [G.subgraph(s) for s in nx.connected_components(G)]
 print('Sizes of the connected components', [len(c) for c in connected_comps])
 
 largest_component= connected_comps[0]
-largest_component
 
+# creating a subgraph with the largest component
 largest_graph = nx.subgraph(G, largest_component)
 
 # run Louvain algorithm on whole graph
@@ -41,7 +36,7 @@ partition_full = community_louvain.best_partition(G, weight='weight')
 # run Louvain algorithm on largest component
 partition = community_louvain.best_partition(largest_graph, weight='weight')
 
-print("# found communities smaller:", max(partition.values()))
+print("# found communities for larger component:", max(partition.values()))
 
 # graph specifications adapted from lectures in Data Science Applications and Techniques, David Weston, Birkbeck University, 2023
 pos_discogs = nx.spring_layout(G)
