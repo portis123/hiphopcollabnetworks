@@ -70,9 +70,9 @@ def get_type(artistName):
         typeName = "not available"
     return typeName
 
-# adding location and type data to artist dataframe - in the end, I had to manually add this to an Excel file from 
-# the printouts due to some artists having the same names so data needed to be checked, and also needing to source
-# data for artists which had no location or type in MusicBrainz
+# adding location and type data to artist dataframe - in the end, I had to manually add this
+# to an Excel file from the printouts rather than allowing the function to add it due to some artists having the same names 
+# so data needed to be checked, and I also needed to source data for artists which had no location or type in MusicBrainz
 def add_location_and_type(artist_df):
     for ind in artist_df.index:
         artist = artist_df['artistName'][ind]
