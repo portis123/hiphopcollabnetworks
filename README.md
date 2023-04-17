@@ -5,7 +5,7 @@ Analysis is based on the Discogs masters data dump from 1 September 2018 (https:
 Files included in this repository are:
 
 1. [GenreLimiter.Rmd](GenreLimiter.Rmd): R file where the Discogs masters file from 1 September 2018 in xml format is parsed and filtered for entries containing the Hip Hop genre, then with data quality classified as Correct, and removing entries with any other genres in addition to Hip Hop. Lastly, only entries with collaborations are retained, and an edge list of collaborating pairs of artists is created and saved as a csv file
-    * [discogs_edges.csv](discogs_edges.csv): Output of GenreLimiter.Rmd
+    * [discogs_edges.csv](discogs_edges.csv): Output of GenreLimiter.Rmd - edge list of collaborating pairs of artists
 2. [XMLToArtistsDf.Rmd](XMLToArtistsDf.Rmd): R file where Discogs masters file is used to create a dataframe of artist ids and artist names
     *  [artists.csv](artists.csv): Output of XMLToArtistsDf.Rmd
 3. [ConvertingEdgeList.py](ConvertingEdgeList.py): Python file where an edge list with artist names is created instead of IDs from the original edge list from Discogs, as well as filtering the wider artist list derived from the masters dataset so that it reflects only the collaborating hip hop artists, as reflected in the edge file from GenreLimiter.Rmd
