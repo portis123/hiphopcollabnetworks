@@ -41,7 +41,7 @@ print('Edges: ', discogs_e)
 r = nx.degree_pearson_correlation_coefficient(G, weight='weight')
 print(r)
 
-# creating ground truth basis
+# creating ground truth basis - artists with their locations as per my research
 artists_communities = {}
 with open('artists_with_location_codes_simpler_for_dict.csv', 'r', encoding="utf8") as file:
     reader = csv.reader(file)
