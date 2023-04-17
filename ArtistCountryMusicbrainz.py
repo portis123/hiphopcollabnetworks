@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 """
-Created on Wed Mar 22 18:18:52 2023
-
 Getting the country for each artist in the dataset through calls to the MusicBrainz API 
 using the musicbrainzngs library. 
 Source: https://python.hotexamples.com/examples/musicbrainzngs/-/get_artist_by_id/python-get_artist_by_id-function-examples.html
@@ -17,17 +15,15 @@ import time
 
 import pandas as pd
 
-# importing fuzzywuzzy library to help with fuzzy matching of artist names from Discogs 
+# importing process function from fuzzywuzzy library to help with fuzzy matching of artist names from Discogs 
 # with those from MusicBrainz
 from fuzzywuzzy import process
 
-# getting the name from the list returned by MusicBrainz that most closely matches the artist 
-# name from Discogs
+# getting the name from the list returned by MusicBrainz that most closely matches the artist name from Discogs
 def check_name_match(artistList, artistName):
     name = artistName
     options = artistList
-    # Get a list of matches ordered by match score - printed so can verify it is a 
-    # good match
+    # Get a list of matches ordered by match score - printed so can verify it is a good match
     print(process.extract(name, options))
     # Selecting the highest scoring match
     result = process.extractOne(name, options)
@@ -65,8 +61,6 @@ def get_country(artist_name):
         country = "not available"
     return country
 
-# testing function works
-get_country("Thomas Mapfumo")
 
 # taking dataframe with artists in it and adding country obtained from MusicBrainz pull
 def add_country(artist_df):
@@ -80,8 +74,4 @@ def add_country(artist_df):
 # loading the artist list from cleaned Discogs dataset
 df_artists_cleaned = pd.read_csv('artists_cleaned_after_duplicates.csv')
 
-df_artists_cleaned.head()
-
 df = add_country(df_artists_cleaned)
-
-#df.to_csv('artists_cleaned_after_duplicates_country.csv',index = False)
