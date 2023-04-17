@@ -28,6 +28,7 @@ classifyArtistLocation(df_artists)
 
 print(df_artists['Code'])
 
+# getting a count of each location classification
 print(df_artists['Code'].value_counts())
 
 df_artists.to_csv('artists_with_location_codes_simpler.csv')
