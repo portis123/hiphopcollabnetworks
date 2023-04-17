@@ -1,9 +1,7 @@
 # -*- coding: utf-8 -*-
 """
-Created on Sat Apr  8 11:40:13 2023
-
 Getting details of communities found by the Louvain Algorithm and looking at all communities returned and then top 5 by size for 
-location trends. Also looking at top 5 communities and location trends for top 5 artists in each community by weighted degree
+location trends. Also looking at top 5 artists by weighted degree in each of the 5 largest communities and their location trends
 
 @author: Monique Brogan
 """
@@ -21,8 +19,6 @@ with open('artists_with_location_codes_simpler_for_dict.csv', 'r', encoding="utf
         artist_id = row[1]
         location_code = int(row[6])
         artists_communities[artist_id] = location_code
-        
-#print(artists_communities)
 
 # create dictionary of artist ids with names
 artists = {}
@@ -32,8 +28,6 @@ with open('artists_with_location_codes_simpler_for_dict.csv', 'r', encoding="utf
         artist_id = row[1]
         artist_name = row[2]
         artists[artist_id] = artist_name
-        
-#print(artists)
 
 # artist location classifier
 def classifyArtistLocation(code):
@@ -58,7 +52,6 @@ GT = nx.Graph()
 G = nx.parse_edgelist(edge_list, delimiter=',', create_using=GT,
                       nodetype=int, data=(('weight', int),))
 
-print(G)
 
 # looking at communities for full network
 partition_full = community_louvain.best_partition(G, weight='weight')
@@ -66,8 +59,6 @@ modularity_full = community_louvain.modularity(partition_full, G, weight='weight
 print("The modularity for the louvain algorithm when run on the whole network is", modularity_full)
 
 print("# found communities:", max(partition_full.values()))
-
-#G.edges.data()
 
 # Filtering the larger network down to the largest component
 connected_comps = [G.subgraph(s) for s in nx.connected_components(G)]
@@ -109,7 +100,6 @@ for i in range(0, num_communities):
 for key, value in partition.items():
     communities_dict.setdefault(value).extend([key])
 
-#print(communities_dict[0])
 
 # getting the lengths for each community to be able to sort them for the largest communities
 community_lengths = {}
@@ -117,18 +107,15 @@ for key, value in communities_dict.items():
     print("Community Number:", key, ", Size:", len(value))
     community_lengths[key] = len(value)
 
-print(community_lengths)
-
 # communities sorted by number of members
 comms_sorted = sorted(community_lengths.items(), key = lambda x: x[1], reverse = True)
-print(comms_sorted)
 
+# 5 largest communities
 top_5 = sorted(community_lengths.items(), key = lambda x: x[1], reverse = True)[:5]
-print(top_5)
 
 # looking at community members, their associated locations and tallying which artists are associated with which locations, then 
 # counting location in community with highest number of members
-def all_communities(comms_list, graph, communities_dictionary):
+def all_members(comms_list, graph, communities_dictionary):
     for comm, count in comms_list:
         # list for locations - to be used as counter, index 0 for East Coast, index 1 for Midwest, index 2 for Southern, index 3 for West Coast
         location = [0,0,0,0]
@@ -140,19 +127,19 @@ def all_communities(comms_list, graph, communities_dictionary):
         srted = sorted(degree, key=lambda a: a[1], reverse=True)
         for identifier, weighted_degree in srted:
             print(comm, artists[str(identifier)], ", associated location:", classifyArtistLocation(artists_communities[str(identifier)]))
-            # incrementing relevant index with location code, 0 index is 1, 1 index is 2 etc
+            # incrementing relevant index with location code, 0 index is for 1 (East Coast), 1 index is for 2 (Midwest) etc
             location[artists_communities[str(identifier)]-1]+=1
         print("community:", comm) 
         print(location)
-        print("largest location as proportion of total size of community:", max(location)/community_lengths[comm])
+        print("largest location as proportion of total size of community:", max(location)/count)
     
 # looking at all communities
-all_communities(comms_sorted, largest_graph, communities_dict)
+all_members(comms_sorted, largest_graph, communities_dict)
 # looking at top 5 communities
-all_communities(top_5, largest_graph, communities_dict)
+all_members(top_5, largest_graph, communities_dict)
 
 # getting top 5 members by weighted degree of top 5 communities, and checking locations
-def top_five_communities(top_5_list, graph, communities_dictionary):
+def top_five_members(top_5_list, graph, communities_dictionary):
     for comm, count in top_5_list:
         # list for locations - to be used as counter, index 0 for East Coast, index 1 for Midwest, index 2 for Southern, index 3 for West Coast
         location = [0,0,0,0]
@@ -170,7 +157,4 @@ def top_five_communities(top_5_list, graph, communities_dictionary):
         print("largest location as proportion of total size of community:", max(location)/5)
     
 
-top_five_communities(top_5, largest_graph, communities_dict)
-
-
-
+top_five_members(top_5, largest_graph, communities_dict)
