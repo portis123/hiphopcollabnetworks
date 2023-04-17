@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 """
-Created on Wed Apr 12 14:00:06 2023
-
 Creating an edge list with artist names instead of IDs from the original edge list from Discogs.
 Also filtering down larger artist id and names list from Discogs masters file to only include those
 in our analysis
