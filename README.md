@@ -27,7 +27,7 @@ Files included in this repository are:
 country data (not US - found when adding locations) or not being musicians but rather actors (Saget) or other non-musicians (Malcolm X), are removed
     * [edges_us_only_cleaned.csv](edges_us_only_cleaned.csv): Output of RemovingArtists.py. Updated edge list without removed artists
     * [artists_us_only_cleaned.csv](artists_us_only_cleaned.csv): Output of RemovingArtists.py. Updated artist list without removed artists
-9. [RemovingArtistsWoLocations.py](RemovingArtistsWoLocations.py): Python file where artists that have no location (not able to be found) from edge file and artist file are removed
+9. [RemovingArtistsWoLocations.py](RemovingArtistsWoLocations.py): Python file where artists that have no location (not able to be found) are removed frpm the edge file and artist file
     * [edges_with_locations.csv](edges_with_locations.csv): Output of RemovingArtistsWoLocations.py. Updated edge list with artists with no locations removed
     * [artists_with_classification_cleaned.csv](artists_with_classification_cleaned.csv): Output of RemovingArtistsWoLocations.py. Updated artist list with artists with no locations removed. Afterwards, cleaned up locations and classifications to avoid misspellings etc in Excel
 10. **The remove tag was added in the Excel file manually for those artists with multiple locations, and the RemovingArtists.py functionality was used again to remove these artist from the dataset. Output files of this process are below**
