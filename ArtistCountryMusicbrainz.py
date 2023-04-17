@@ -62,7 +62,9 @@ def get_country(artist_name):
     return country
 
 
-# taking dataframe with artists in it and adding country obtained from MusicBrainz pull
+# taking dataframe with artists in it and adding country obtained from MusicBrainz pull - in the end, I had to manually add this
+# to an Excel file from the printouts due to some artists having the same data so not all data was accurate, and also needing to source
+# data for artists which had no country in MusicBrainz
 def add_country(artist_df):
     for ind in artist_df.index:
         artist = artist_df['artistName'][ind]
