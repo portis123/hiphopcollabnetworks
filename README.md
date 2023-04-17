@@ -2,6 +2,8 @@
 
 Analysis is based on the Discogs masters data dump from 1 September 2018 (https://dataverse.harvard.edu/file.xhtml?persistentId=doi:10.7910/DVN/Q02JJQ/Y6C9UK&version=2.0), and also uses the Discogs artists data dump from the same date (https://discogs-data-dumps.s3.us-west-2.amazonaws.com/index.html?prefix=data/2018/).
 
+Where relevant, code sources are included in the comments as a link or as text description.
+
 Files included in this repository are:
 
 1. [GenreLimiter.Rmd](GenreLimiter.Rmd): R file where the Discogs masters file from 1 September 2018 in xml format is parsed and filtered for entries containing the Hip Hop genre, then with data quality classified as Correct, and removing entries with any other genres in addition to Hip Hop. Lastly, only entries with collaborations are retained, and an edge list of collaborating pairs of artists is created and saved as a csv file
