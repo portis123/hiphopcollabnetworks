@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 Code to gather location data for US artists from MusicBrainz using the musicbrainzngs library. 
-Source of some of the below code: https://python.hotexamples.com/examples/musicbrainzngs/-/get_artist_by_id/python-get_artist_by_id-function-examples.html
+Reference: https://python.hotexamples.com/examples/musicbrainzngs/-/get_artist_by_id/python-get_artist_by_id-function-examples.html
 
 @author: Monique Brogan
 """
