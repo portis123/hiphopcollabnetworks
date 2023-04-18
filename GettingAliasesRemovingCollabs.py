@@ -2,7 +2,7 @@
 """
 Used the xmltodict library to get details of artists' aliases in a dataframe alongside their 
 artist ids and names. 
-Source: https://python.plainenglish.io/saving-xml-content-to-a-pandas-dataframe-using-xmltodict-b6fab32a5100. 
+Reference: https://python.plainenglish.io/saving-xml-content-to-a-pandas-dataframe-using-xmltodict-b6fab32a5100. 
 Then removed all instances from the edge list where an artist is shown as collaborating with themselves.
 Cleaned up the artist list based on updated edge list
 
