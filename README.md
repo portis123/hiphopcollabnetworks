@@ -2,7 +2,7 @@
 
 Analysis is based on the Discogs masters data dump from 1 September 2018 (https://dataverse.harvard.edu/file.xhtml?persistentId=doi:10.7910/DVN/Q02JJQ/Y6C9UK&version=2.0), and also uses the Discogs artists data dump from the same date (https://discogs-data-dumps.s3.us-west-2.amazonaws.com/index.html?prefix=data/2018/).
 
-Where relevant, code sources are included in the comments as a link or as a text explanation.
+Where relevant, code references are included in the comments as a link or as a text explanation.
 
 Files included in this repository are:
 
