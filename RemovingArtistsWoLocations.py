@@ -2,7 +2,7 @@
 """
 Removing artists from edge file and artist file that have no location (not able to be found)
 
-@author: Monique Brogan
+@author: ##
 """
 import pandas as pd
 

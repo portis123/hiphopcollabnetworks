@@ -2,7 +2,7 @@
 """
 Running Louvain and Leiden algorithms and comparing modularity scores
 
-@author: Monique Brogan
+@author: ##
 """
 import networkx as nx
 

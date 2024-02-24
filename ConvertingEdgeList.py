@@ -4,7 +4,7 @@ Creating an edge list with artist names instead of IDs from the original edge li
 Also filtering down larger artist id and names list from Discogs masters file to only include those
 in our analysis
 
-@author: Monique Brogan
+@author: ##
 """
 
 import pandas as pd

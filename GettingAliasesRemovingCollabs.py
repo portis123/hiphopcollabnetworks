@@ -6,7 +6,7 @@ Reference: https://python.plainenglish.io/saving-xml-content-to-a-pandas-datafra
 Then removed all instances from the edge list where an artist is shown as collaborating with themselves.
 Cleaned up the artist list based on updated edge list
 
-@author: Monique Brogan
+@author: ##
 """
 #pip install xmltodict
 

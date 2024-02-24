@@ -2,7 +2,7 @@
 """
 Running network analytics on the US hip hop artists dataset
 
-@author: Monique Brogan
+@author: ##
 """
 import networkx as nx
 import csv

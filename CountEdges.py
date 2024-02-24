@@ -2,7 +2,7 @@
 """
 Counting the number of edges between the same two artists. Getting edge weights for frequent collaborations
 
-@author: Monique Brogan
+@author: ##
 """
 import pandas as pd
 

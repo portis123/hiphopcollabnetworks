@@ -2,7 +2,7 @@
 """
 Adding location classifiers, the basis for ground truth, to artist details
 
-@author: Monique Brogan
+@author: ##
 """
 import pandas as pd
 

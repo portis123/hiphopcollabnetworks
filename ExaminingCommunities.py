@@ -3,7 +3,7 @@
 Getting details of communities found by the Louvain Algorithm and looking at all communities returned and then top 5 by size for 
 location trends. Also looking at top 5 artists by weighted degree in each of the 5 largest communities and their location trends
 
-@author: Monique Brogan
+@author: ##
 """
 
 import networkx as nx

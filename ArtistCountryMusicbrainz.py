@@ -4,12 +4,12 @@ Getting the country for each artist in the dataset through calls to the MusicBra
 using the musicbrainzngs library. 
 Reference: https://python.hotexamples.com/examples/musicbrainzngs/-/get_artist_by_id/python-get_artist_by_id-function-examples.html
 
-@author: Monique Brogan
+@author: ##
 """
 
 import musicbrainzngs as mbz
 
-mbz.set_useragent('MoniqueBrogan', '0.1', '123portis@googlemail.com')
+mbz.set_useragent('##', '##', '##')
 
 import time
 

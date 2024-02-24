@@ -2,7 +2,7 @@
 """
 Plotting the communities produced by the Louvain Community Detection algorithm
 
-@author: Monique Brogan
+@author: ##
 """
 
 import networkx as nx

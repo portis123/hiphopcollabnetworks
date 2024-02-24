@@ -3,7 +3,7 @@
 Removing artists that have been marked to remove because of being labels rather than artists, having incorrect 
 country data (not US - found when adding locations) or not being musicians but rather actors (Saget) or other non-musicians (Malcolm X)
 
-@author: Monique Brogan
+@author: ##
 """
 import pandas as pd
 

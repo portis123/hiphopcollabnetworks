@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-@author: Monique Brogan
+@author: ##
 
 Filtering dataset for artists based in the US only
 """
