@@ -1,5 +1,15 @@
 # Community Detection in the sphere of US hip hop through the analysis of collaboration networks
 
+Final Year Project for BSc (Hons) in Data Science and Computing.
+
+The hip hop music genre has often been closely tied to the locations from which its artists originate. It is also a genre that regularly involves artists collaborating with one another on songs and albums. This project explores the communities that can be found by using a community detection algorithm on the network of United States hip hop artists who collaborate with one another and investigates whether these communities reflect the locations that the artists are affiliated with.
+
+Research was first undertaken to compile a dataset of US hip hop artists and their related locations. The artist and collaboration information were derived from the master releases file compiled by the Discogs music website and released on 1 September 2018, while the location information was found through a variety of sources, predominantly the MusicBrainz database. The artists, with their locations, were then classified into their relevant regions: East Coast, West Coast, Midwest and Southern.
+
+An undirected, weighted network graph was derived from the collaborating artists, and the Louvain Community Detection Algorithm in Networkx was chosen for conducting the analysis of the communities within the network. 
+
+The project concluded that although artist location has some relevance to communities found using community detection methods, other bases such as label affiliation and changes over time need to be explored to fully explain the structure of these communities.
+
 Analysis is based on the Discogs masters data dump from 1 September 2018 (https://dataverse.harvard.edu/file.xhtml?persistentId=doi:10.7910/DVN/Q02JJQ/Y6C9UK&version=2.0), and also uses the Discogs artists data dump from the same date (https://discogs-data-dumps.s3.us-west-2.amazonaws.com/index.html?prefix=data/2018/).
 
 Where relevant, code references are included in the comments as a link or as a text explanation.
